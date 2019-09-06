@@ -1,12 +1,15 @@
 package testcases;
 
-import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import org.testng.annotations.Listeners;
+
 import java.io.IOException;
+
 
 public class SampleTest {
 
@@ -27,5 +30,4 @@ public class SampleTest {
         //test1.addScreenCaptureFromPath("sc.png");
         extent.flush();
     }
-
 }
