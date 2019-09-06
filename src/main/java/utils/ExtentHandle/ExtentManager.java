@@ -26,7 +26,7 @@ public class ExtentManager {
         htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setTheme(Theme.STANDARD);
-        htmlReporter.config().setDocumentTitle("Genentec-reports");
+        htmlReporter.config().setDocumentTitle("Automation-reports");
         htmlReporter.config().setEncoding("utf-8");
         htmlReporter.config().setReportName("Selenium-Reports");
         htmlReporter.config().setProtocol(Protocol.HTTPS);

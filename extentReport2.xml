@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestSuite" parallel="classes" thread-count="3">
+<suite name="testSuite" parallel="classes" thread-count="3">
     <listeners>
         <listener class-name="utils.Listeners.TestNGListeners"/>
     </listeners>
 
     <test thread-count="2" name="test">
         <classes>
-            <class name="extentReports3.ExtentTest3"/>
-            <class name="extentReports3.ExtentTest"/>
+            <class name="testcases.TestngTest"/>
+            <class name="testcases.TestngTest1"/>
         </classes>
     </test>
 

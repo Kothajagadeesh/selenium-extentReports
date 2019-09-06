@@ -2,17 +2,17 @@ package testcases;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.Listeners.TestNGListeners;
 
 
 public class TestngTest {
 
-    @Test
-    public void test1(){
-        System.out.println("ff");
-    }
-
+    TestNGListeners testNGListeners = new TestNGListeners();
     @Test
     public void test2(){
-        System.out.println("bb");
+
+        testNGListeners.AssertFailAndContinue(true,"validating true");
+        testNGListeners.AssertFailAndContinue(false,"validating false");
+        testNGListeners.AssertFailAndContinue(true,"validating true");
     }
 }

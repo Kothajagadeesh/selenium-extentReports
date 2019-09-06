@@ -14,7 +14,7 @@ public class ExtentManagerLoadXml {
 
     public static ExtentReports getInstance() {
         if (extent == null) {
-            extent = new ExtentReports(System.getProperty("user.dir") + "/reports/html/extent.html", false, DisplayOrder.NEWEST_FIRST);
+            extent = new ExtentReports(System.getProperty("user.dir") + "/reports/html/extent2.html", false, DisplayOrder.NEWEST_FIRST);
             extent.loadConfig(new File(System.getProperty("user.dir") + "/src/main/resources/ReportsConfig.xml"));
         }
         return extent;

@@ -44,4 +44,17 @@ public class TestNGListeners extends ExtentManagerLoadXml implements ITestListen
 
     public void onFinish(ITestContext context) {
     }
+
+    public void AssertFailAndContinue(boolean result, String description) {
+        try {
+            if (result) {
+                test.log(LogStatus.PASS, description);
+            } else {
+                test.log(LogStatus.FAIL, description);
+                ITestResult result1 = Reporter.getCurrentTestResult();
+                result1.setStatus(2);
+            }
+        } catch (Exception e) {
+        }
+    }
 }
