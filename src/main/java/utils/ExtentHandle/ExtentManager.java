@@ -11,7 +11,8 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManager {
 
     private static ExtentReports extent;
-    public static ExtentTest extentTest;
+    public static ExtentTest parentTest;
+    public static ExtentTest childTest;
     public ExtentReports extentReports;
     public static String currentDir = System.getProperty("user.dir");
     public static String reportDir = "/reports/";

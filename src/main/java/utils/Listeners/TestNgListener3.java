@@ -5,7 +5,7 @@ import com.aventstack.extentreports.Status;
 import org.testng.*;
 import utils.ExtentHandle.ExtentManager;
 
-public class TestNgListener3 extends ExtentManager implements ITestListener, ISuiteListener {
+public class TestNgListener3 extends ExtentManager implements ITestListener, ISuiteListener, IClassListener {
 
     public synchronized void onStart(ISuite suite) {
     }
@@ -14,23 +14,23 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
     }
 
     public synchronized void onTestStart(ITestResult result) {
-        extentTest = extentReports.createTest(result.getName());
-        extentTest.log(Status.INFO, "Test Started");
+        childTest = parentTest.createNode(result.getName());
+        childTest.log(Status.INFO, "Test Started");
     }
 
     public synchronized void onTestSuccess(ITestResult result) {
-        extentTest.log(Status.PASS, result.getName() + " Passed");
-        extentTest.log(Status.INFO, result.getName() + " Ended");
+        childTest.log(Status.PASS, result.getName() + " Passed");
+        childTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestFailure(ITestResult result) {
-        extentTest.log(Status.FAIL, result.getName() + " Failed");
-        extentTest.log(Status.INFO, result.getName() + " Ended");
+        childTest.log(Status.FAIL, result.getName() + " Failed");
+        childTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
-        extentTest.log(Status.SKIP, result.getName() + " Skipped");
-        extentTest.log(Status.INFO, result.getName() + " Ended");
+        childTest.log(Status.SKIP, result.getName() + " Skipped");
+        childTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -47,9 +47,9 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
     public synchronized void AssertFailAndContinue(boolean result, String description) {
         try {
             if (result) {
-                extentTest.log(Status.PASS, description);
+                childTest.log(Status.PASS, description);
             } else {
-                extentTest.log(Status.FAIL, description, MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + "/src/main/resources/17.png").build());
+                childTest.log(Status.FAIL, description, MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + "/src/main/resources/17.png").build());
                 ITestResult result1 = Reporter.getCurrentTestResult();
                 result1.setStatus(2);
             }
@@ -58,12 +58,19 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
     }
 
     public synchronized void logInfo(String info) {
-        extentTest.log(Status.INFO, info);
+        childTest.log(Status.INFO, info);
         //we can attach screenshot if needed, see AssertFailAndContinue fail case
     }
 
     public synchronized void logWarning(String info) {
-        extentTest.log(Status.WARNING, info);
+        childTest.log(Status.WARNING, info);
         //we can attach screenshot if needed, see AssertFailAndContinue fail case
+    }
+
+    public void onBeforeClass(ITestClass testClass) {
+        parentTest = extentReports.createTest(testClass.getName());
+    }
+
+    public void onAfterClass(ITestClass testClass) {
     }
 }
