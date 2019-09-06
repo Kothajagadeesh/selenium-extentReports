@@ -8,44 +8,44 @@ public class TestNGListeners extends ExtentManagerLoadXml implements ITestListen
     public void onStart(ISuite suite) {
     }
 
-    public void onFinish(ISuite suite) {
+    public synchronized void onFinish(ISuite suite) {
     }
 
-    public void onTestStart(ITestResult result) {
+    public synchronized void onTestStart(ITestResult result) {
         test = rep.startTest(result.getName());
         test.log(LogStatus.INFO, result.getName() + " started");
     }
 
-    public void onTestSuccess(ITestResult result) {
+    public synchronized void onTestSuccess(ITestResult result) {
         test.log(LogStatus.PASS, result.getName() + " executed successfully");
         rep.endTest(test);
         rep.flush();
     }
 
-    public void onTestFailure(ITestResult result) {
+    public synchronized void onTestFailure(ITestResult result) {
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         test.log(LogStatus.FAIL, result.getMethod().getMethodName() + " Failed with Exception " + result.getThrowable());
         rep.endTest(test);
         rep.flush();
     }
 
-    public void onTestSkipped(ITestResult result) {
+    public synchronized void onTestSkipped(ITestResult result) {
         test.log(LogStatus.SKIP, result.getMethod().getMethodName() + " skipped with reason " + result.getThrowable());
         rep.endTest(test);
         rep.flush();
     }
 
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
     }
 
-    public void onStart(ITestContext context) {
+    public synchronized void onStart(ITestContext context) {
         rep = ExtentManagerLoadXml.getInstance();
     }
 
-    public void onFinish(ITestContext context) {
+    public synchronized void onFinish(ITestContext context) {
     }
 
-    public void AssertFailAndContinue(boolean result, String description) {
+    public synchronized void AssertFailAndContinue(boolean result, String description) {
         try {
             if (result) {
                 test.log(LogStatus.PASS, description);
