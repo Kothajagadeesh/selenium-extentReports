@@ -4,7 +4,6 @@ import org.testng.annotations.*;
 import utils.Listeners.TestNgListener3;
 
 
-@Listeners(TestNgListener3.class)
 public class ExtentTest {
     TestNgListener3 testNgListener3 = new TestNgListener3();
 

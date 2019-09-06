@@ -20,14 +20,17 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
 
     public synchronized void onTestSuccess(ITestResult result) {
         extentTest.log(Status.PASS, result.getName() + " Passed");
+        extentTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestFailure(ITestResult result) {
         extentTest.log(Status.FAIL, result.getName() + " Failed");
+        extentTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
         extentTest.log(Status.SKIP, result.getName() + " Skipped");
+        extentTest.log(Status.INFO, result.getName() + " Ended");
     }
 
     public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -38,7 +41,6 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
     }
 
     public synchronized void onFinish(ITestContext context) {
-        extentTest.log(Status.INFO, "Test Ended");
         extentReports.flush();
     }
 
@@ -47,7 +49,6 @@ public class TestNgListener3 extends ExtentManager implements ITestListener, ISu
             if (result) {
                 extentTest.log(Status.PASS, description);
             } else {
-                //extentTest.log(Status.FAIL, description);
                 extentTest.log(Status.FAIL, description, MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + "/src/main/resources/17.png").build());
                 ITestResult result1 = Reporter.getCurrentTestResult();
                 result1.setStatus(2);

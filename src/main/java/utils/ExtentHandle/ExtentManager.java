@@ -13,11 +13,19 @@ public class ExtentManager {
     private static ExtentReports extent;
     public static ExtentTest extentTest;
     public ExtentReports extentReports;
+    public static String currentDir = System.getProperty("user.dir");
+    public static String reportDir = "/reports/";
+    public static String fileName = "extent3_";
+
+    private static String generateHtml() {
+        return Long.toString(System.currentTimeMillis());
+    }
 
 
     public static ExtentReports getInstance() {
-        if (extent == null)
-            createInstance(System.getProperty("user.dir") + "/reports/html/extent3.html");
+        if (extent == null) {
+            createInstance(currentDir + reportDir + fileName + generateHtml() + ".html");
+        }
         return extent;
     }
 

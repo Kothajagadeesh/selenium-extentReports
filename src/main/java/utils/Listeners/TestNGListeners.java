@@ -16,8 +16,10 @@ public class TestNGListeners extends ExtentManagerLoadXml implements ITestListen
         test.log(LogStatus.INFO, result.getName() + " started");
     }
 
+
     public synchronized void onTestSuccess(ITestResult result) {
-        test.log(LogStatus.PASS, result.getName() + " executed successfully");
+        test.log(LogStatus.PASS, result.getName() + " Passed");
+        test.log(LogStatus.INFO, result.getName() + " Ended");
         rep.endTest(test);
         rep.flush();
     }
@@ -25,12 +27,14 @@ public class TestNGListeners extends ExtentManagerLoadXml implements ITestListen
     public synchronized void onTestFailure(ITestResult result) {
         System.setProperty("org.uncommons.reportng.escape-output", "false");
         test.log(LogStatus.FAIL, result.getMethod().getMethodName() + " Failed with Exception " + result.getThrowable());
+        test.log(LogStatus.INFO, result.getName() + " Ended");
         rep.endTest(test);
         rep.flush();
     }
 
     public synchronized void onTestSkipped(ITestResult result) {
         test.log(LogStatus.SKIP, result.getMethod().getMethodName() + " skipped with reason " + result.getThrowable());
+        test.log(LogStatus.INFO, result.getName() + " Ended");
         rep.endTest(test);
         rep.flush();
     }
