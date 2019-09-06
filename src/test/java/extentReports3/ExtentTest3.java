@@ -21,6 +21,8 @@ public class ExtentTest3 {
         System.out.println("bb");
         testNgListener3.AssertFailAndContinue(1 == 2, "checking in build assertion");
         testNgListener3.AssertFailAndContinue(1 == 1, "checking in build assertion");
+        testNgListener3.AssertFailAndContinue(1 == 2, "checking in build assertion");
+        testNgListener3.AssertFailAndContinue(1 == 2, "checking in build assertion");
     }
 
 

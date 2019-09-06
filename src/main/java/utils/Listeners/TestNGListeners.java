@@ -51,6 +51,7 @@ public class TestNGListeners extends ExtentManagerLoadXml implements ITestListen
                 test.log(LogStatus.PASS, description);
             } else {
                 test.log(LogStatus.FAIL, description);
+                test.addScreenCapture(System.getProperty("user.dir")+"/src/main/resources/17.png");
                 ITestResult result1 = Reporter.getCurrentTestResult();
                 result1.setStatus(2);
             }
