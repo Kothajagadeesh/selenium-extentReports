@@ -2,7 +2,7 @@ package extentReports3;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.TestNgListener3;
+import utils.Listeners.TestNgListener3;
 
 
 @Listeners(TestNgListener3.class)

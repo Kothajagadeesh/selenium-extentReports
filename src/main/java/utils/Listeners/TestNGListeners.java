@@ -1,7 +1,8 @@
-package utils;
+package utils.Listeners;
 
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.*;
+import utils.ExtentHandle.ExtentManagerLoadXml;
 
 public class TestNGListeners extends ExtentManagerLoadXml implements ITestListener, ISuiteListener {
     public void onStart(ISuite suite) {

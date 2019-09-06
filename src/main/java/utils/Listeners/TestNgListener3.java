@@ -1,7 +1,8 @@
-package utils;
+package utils.Listeners;
 
 import com.aventstack.extentreports.Status;
 import org.testng.*;
+import utils.ExtentHandle.ExtentManager;
 
 public class TestNgListener3 extends ExtentManager implements ITestListener, ISuiteListener {
 
