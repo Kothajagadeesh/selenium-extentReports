@@ -28,7 +28,7 @@ public class ExtentManager {
         htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setDocumentTitle("Genentec-reports");
         htmlReporter.config().setEncoding("utf-8");
-        htmlReporter.config().setReportName("Genentec-Selenium-Reports");
+        htmlReporter.config().setReportName("Selenium-Reports");
         htmlReporter.config().setProtocol(Protocol.HTTPS);
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
