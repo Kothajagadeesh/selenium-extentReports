@@ -1,7 +1,6 @@
 package extentReports3;
 
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.Listeners.TestNgListener3;
 
 
@@ -9,6 +8,25 @@ import utils.Listeners.TestNgListener3;
 public class ExtentTest {
     TestNgListener3 testNgListener3 = new TestNgListener3();
 
+    @BeforeClass
+    public void beforeClass() {
+        System.out.println("checking before class in " + getClass().toString());
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        System.out.println("before method");
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("After method");
+    }
+
+    @AfterClass
+    public void afterClass() {
+        System.out.println("Checking after class " + getClass().toString());
+    }
     @Test
     public void test3() {
         System.out.println("ff");
