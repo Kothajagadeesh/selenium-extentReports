@@ -25,20 +25,21 @@ public class ExtentManager {
 
     public static ExtentReports getInstance() {
         if (extent == null) {
-            createInstance(currentDir + reportDir + fileName + generateHtml() + ".html");
+            createInstance(currentDir + reportDir + fileName + ".html");
         }
         return extent;
     }
 
     public static ExtentReports createInstance(String fileName) {
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(fileName);
-        htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
         htmlReporter.config().setChartVisibilityOnOpen(true);
-        htmlReporter.config().setTheme(Theme.STANDARD);
-        htmlReporter.config().setDocumentTitle("Automation-reports");
-        htmlReporter.config().setEncoding("utf-8");
+        htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM); // chart location - top, bottom
+        htmlReporter.config().setTheme(Theme.STANDARD); // theme - standard, dark
+        htmlReporter.config().setDocumentTitle("Automation-reports"); // report title
+        htmlReporter.config().setEncoding("UTF-8"); //// encoding, default = UTF-8
         htmlReporter.config().setReportName("Selenium-Reports");
-        htmlReporter.config().setProtocol(Protocol.HTTPS);
+        htmlReporter.config().setProtocol(Protocol.HTTPS); // protocol (http, https)
+        //htmlReporter.setAppendExisting(true); //To apped reports to existing html file
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         return extent;
