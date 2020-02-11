@@ -1,6 +1,6 @@
 # selenium-extentReports
 
-@Author: Kothajagadeesh(kothajagadis@gmail.com)
+@Author: Kothajagadeesh(kothajagadish@gmail.com)
 
 # Tools
 1. Extent Reports-3
